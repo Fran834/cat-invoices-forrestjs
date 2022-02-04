@@ -1,0 +1,123 @@
+- table:
+    schema: public
+    name: clients
+  array_relationships:
+  - name: invoices
+    using:
+      foreign_key_constraint_on:
+        column: client_id
+        table:
+          schema: public
+          name: invoices
+- table:
+    schema: public
+    name: invoices
+  object_relationships:
+  - name: client
+    using:
+      foreign_key_constraint_on: client_id
+  insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+      - date
+      - client_id
+      - id
+      - base
+      - total
+      - vat
+      - client_name
+      - client_vat
+      - number
+      backend_only: false
+  - role: user
+    permission:
+      check: {}
+      columns:
+      - date
+      - client_id
+      - id
+      - base
+      - total
+      - vat
+      - client_name
+      - client_vat
+      - number
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - date
+      - client_id
+      - id
+      - base
+      - total
+      - vat
+      - client_name
+      - client_vat
+      - number
+      filter: {}
+  - role: user
+    permission:
+      columns:
+      - date
+      - client_id
+      - id
+      - base
+      - total
+      - vat
+      - client_name
+      - client_vat
+      - number
+      filter: {}
+  update_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - base
+      - client_id
+      - client_name
+      - client_vat
+      - date
+      - number
+      - total
+      - vat
+      filter: {}
+      check: null
+  - role: user
+    permission:
+      columns:
+      - date
+      - client_id
+      - id
+      - base
+      - total
+      - vat
+      - client_name
+      - client_vat
+      - number
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: anonymous
+    permission:
+      filter: {}
+  - role: user
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: users
+  insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns: []
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns: []
+      filter: {}
