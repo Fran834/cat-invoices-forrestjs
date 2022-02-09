@@ -4,7 +4,7 @@ import AccountBalanceWallet from '@mui/icons-material/AccountBalanceWallet';
 export const layoutItems = [
   {
     key: 'Invoices',
-    linkTo: '/Invoices',
+    linkTo: '/invoices',
     Icon: () => { return (<AccountBalanceWallet />) } ,
     text: 'Invoices'
   },

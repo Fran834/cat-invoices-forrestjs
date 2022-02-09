@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Fran834/cat-invoices-forrestJS/issues"
   },
-  "homepage": "https://github.com/Fran834/cat-invoices-forrestJS#readme"
+  "homepage": "https://github.com/Fran834/cat-invoices-forrestJS#readme",
+  "dependencies": {
+    "@forrestjs/service-apollo": "^4.2.0-alpha.3"
+  }
 }

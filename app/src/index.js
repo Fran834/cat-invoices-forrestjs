@@ -7,17 +7,32 @@ import reactRouter from "@forrestjs/react-router";
 import reactMUI from '@forrestjs/react-mui';
 import { OneFront } from "./one-front";
 
-
 //Import feactures:
 import { customRoot } from './one-front/custom-root';
 import { login } from "./features/login";
 import { muiTheme } from "./one-front/mui-theme";
+import { Invoices } from "./features/invoices"
+
+const serviceApollo = require("@forrestjs/service-apollo");
 
 // Run the ForrestJS App:
 runHookApp({
   trace: 'compact',
-  services: [reactRoot, reactRouter, reactMUI, OneFront],
-  features: [muiTheme],
+  settings: {
+    apollo: {
+      client: {
+        config: {
+          uri: `'http://localhost:8080/v1/graphql'`
+          // headers: {
+          //   "Content-Type": "application/json",
+          //   Authorization: `Bearer ${env.HASURA_TOKEN}`
+          // }
+        }
+      }
+    }
+  },
+  services: [serviceApollo, reactRoot, reactRouter, reactMUI, OneFront],
+  features: [muiTheme, Invoices],
 }).catch((err) => console.error(`Boot: ${err.message}`));
 
 
